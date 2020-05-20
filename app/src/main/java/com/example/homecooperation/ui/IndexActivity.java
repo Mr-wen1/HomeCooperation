@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 
 import com.example.framework.entity.Constants;
 import com.example.framework.utils.SpUtils;
@@ -51,7 +52,16 @@ public class IndexActivity extends AppCompatActivity {
                 .getBoolean(Constants.SP_IS_FIRST_RUN, true);
         Intent intent = new Intent();
         if (isFirstRun){
-            intent.setClass()
+            //跳转到引导页
+            intent.setClass(this, GuideActivity.class);
+            //设置不是第一次启动
+            SpUtils.getInstance().putBoolean(Constants.SP_IS_FIRST_RUN,false);
+        }else {
+            //非第一次启动，判断是否登录过
+            String token = SpUtils.getInstance().getString(Constants.SP_TOKEN, "");
+            if (TextUtils.isEmpty(token)){
+
+            }
         }
 
     }

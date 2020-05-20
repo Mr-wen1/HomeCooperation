@@ -11,6 +11,6 @@ public class GuideActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act);
+        setContentView(R.layout.activity_guide);
     }
 }
