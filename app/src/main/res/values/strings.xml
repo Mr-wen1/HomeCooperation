@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Home Cooperation</string>
+
+    <string name="login_phone">电话号码</string>
+    <string name="login_password">登陆密码</string>
+
+    <string name="register_input_username">请输入用户名</string>
+    <string name="register_input_password">请输入密码:</string>
+    <string name="register_input_passwordAgain">请再次输入密码:</string>
+    <string name="register_phoneCode">验证码：</string>
+    <string name="register_input_phoneCode">请输入验证码</string>
+    <string name="register_userIdentity1">家长</string>
+    <string name="register_userIdentity2">幼儿园</string>
+
+
+    <string name="bt_login">登录</string>
+    <string name="bt_register">注册</string>
+    <string name="bt_send">发送</string>
+
+    <string name="text_register">注册</string>
+    <string name="text_username">用户名:</string>
+    <string name="text_password">密  码:</string>
 </resources>
