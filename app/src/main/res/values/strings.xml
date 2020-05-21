@@ -4,6 +4,9 @@
     <string name="login_phone">电话号码</string>
     <string name="login_password">登陆密码</string>
 
+    <string name="guide_skip">跳过</string>
+
+
     <string name="register_input_username">请输入用户名</string>
     <string name="register_input_password">请输入密码:</string>
     <string name="register_input_passwordAgain">请再次输入密码:</string>

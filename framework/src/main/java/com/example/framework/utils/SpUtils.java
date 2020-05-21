@@ -1,5 +1,6 @@
 package com.example.framework.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -32,6 +33,7 @@ public class SpUtils {
         return mInstance;
     }
 
+    @SuppressLint("CommitPrefEdits")
     public void initSp(Context mContext) {
         /*
          * MODE_PRIVATE：只限于本应用读写

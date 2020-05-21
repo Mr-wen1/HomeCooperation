@@ -1,7 +1,5 @@
 package com.example.homecooperation.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.framework.baseui.BaseUIActivity;
+import com.example.framework.base.BaseUIActivity;
 import com.example.homecooperation.MainActivity;
 import com.example.homecooperation.R;
 

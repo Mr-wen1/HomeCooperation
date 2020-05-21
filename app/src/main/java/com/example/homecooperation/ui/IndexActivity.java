@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.framework.entity.Constants;
+import com.example.framework.utils.LogUtils;
 import com.example.framework.utils.SpUtils;
+import com.example.homecooperation.MainActivity;
 import com.example.homecooperation.R;
 
 /**
@@ -27,11 +30,9 @@ public class IndexActivity extends AppCompatActivity {
 
     private static final int SKIP_MAIN = 1000;
 
-    private Handler mHandler =new Handler(message ->{
-        switch (message.what){
-            case SKIP_MAIN:
-                startMain();
-                break;
+    private Handler mHandler = new Handler(message -> {
+        if (message.what == SKIP_MAIN) {
+            startMain();
         }
         return false;
     });
@@ -40,6 +41,7 @@ public class IndexActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
+        mHandler.sendEmptyMessageDelayed(SKIP_MAIN, 2 * 1000);
     }
 
 
@@ -51,18 +53,21 @@ public class IndexActivity extends AppCompatActivity {
         boolean isFirstRun = SpUtils.getInstance()
                 .getBoolean(Constants.SP_IS_FIRST_RUN, true);
         Intent intent = new Intent();
-        if (isFirstRun){
+        if (isFirstRun) {
             //跳转到引导页
             intent.setClass(this, GuideActivity.class);
             //设置不是第一次启动
-            SpUtils.getInstance().putBoolean(Constants.SP_IS_FIRST_RUN,false);
-        }else {
-            //非第一次启动，判断是否登录过
-            String token = SpUtils.getInstance().getString(Constants.SP_TOKEN, "");
-            if (TextUtils.isEmpty(token)){
-
-            }
+            SpUtils.getInstance().putBoolean(Constants.SP_IS_FIRST_RUN, false);
+//        } else {
+//
+//            intent.setClass(this, LoginActivity.class);
+//            //非第一次启动，判断是否登录过
+//            String token = SpUtils.getInstance().getString(Constants.SP_TOKEN, "");
+//            if (TextUtils.isEmpty(token)) {
+//                intent.setClass(this, MainActivity.class);
+//            } else {
+//                intent.setClass(this, LoginActivity.class);
+//            }
         }
-
     }
 }

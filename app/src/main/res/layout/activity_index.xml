@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.IndexActivity">
 
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/loading" />
 </androidx.constraintlayout.widget.ConstraintLayout>

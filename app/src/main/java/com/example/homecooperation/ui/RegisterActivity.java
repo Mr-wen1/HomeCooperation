@@ -11,7 +11,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.framework.baseui.BaseUIActivity;
+import com.example.framework.base.BaseUIActivity;
+import com.example.framework.utils.LogUtils;
 import com.example.homecooperation.R;
 
 import okhttp3.MediaType;
@@ -33,10 +34,9 @@ public class RegisterActivity extends BaseUIActivity implements View.OnClickList
 
     ImageView im_backLogin;
 
-    private RadioGroup radioGroupIdentity;
 
-//    protected String identity;
-//    protected String permission;
+
+    protected String permission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,8 @@ public class RegisterActivity extends BaseUIActivity implements View.OnClickList
     }
 
     private void initView() {
+
+        RadioGroup radioGroupIdentity;
 
         et_register_username = findViewById(R.id.et_register_username);
         et_register_password = findViewById(R.id.et_register_password);
@@ -67,13 +69,14 @@ public class RegisterActivity extends BaseUIActivity implements View.OnClickList
         radioGroupIdentity.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton chooseIdentity = group.findViewById(checkedId);
             String identity = chooseIdentity.getText().toString();
-            Toast.makeText(RegisterActivity.this, identity, Toast.LENGTH_LONG).show();
+            Toast.makeText(RegisterActivity.this, "你选择的身份是"+identity
+                    , Toast.LENGTH_LONG).show();
             switch (checkedId) {
                 case R.id.rb_register_userIdentity_parent:
-
+                        permission = "parent";
                     break;
                 case R.id.rb_register_userIdentity_kinderGarden:
-
+                        permission = "kinderGarden";
                     break;
             }
 
@@ -90,15 +93,15 @@ public class RegisterActivity extends BaseUIActivity implements View.OnClickList
                 String username = et_register_username.getText().toString();
                 String password = et_register_password.getText().toString();
                 String passwordAgain = et_register_passwordAgain.getText().toString();
-
+                String authority = permission;
                 if (password.equals(passwordAgain)) {
                     new Thread(() -> {
                         try {
                             String json = "{\n" +
                                     "\t\"id\": 10,\n" +
-                                    "\t\"username\":\"wql\",\n" +
-                                    "\t\"password\": \"123456\",\n" +
-                                    "\t\"permission\": \"yes\"\n" +
+                                    "\t\"username\":\"" + username + "\",\n" +
+                                    "\t\"password\": \"" + passwordAgain + "\",\n" +
+                                    "\t\"permission\": \""+ authority +"\n" +
                                     "}";
 
                             OkHttpClient client = new OkHttpClient();
@@ -108,7 +111,7 @@ public class RegisterActivity extends BaseUIActivity implements View.OnClickList
                                     .build();
                             //执行发送命令
                             Response response = client.newCall(request).execute();
-
+                            LogUtils.e(json);
                             runOnUiThread(() -> Toast.makeText(RegisterActivity.this,
                                     "发送成功", Toast.LENGTH_SHORT).show());
                         } catch (Exception e) {

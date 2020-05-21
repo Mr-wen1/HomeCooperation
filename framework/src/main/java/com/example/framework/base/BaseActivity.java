@@ -1,4 +1,4 @@
-package com.example.framework.baseui;
+package com.example.framework.base;
 
 import android.Manifest;
 import android.content.Intent;

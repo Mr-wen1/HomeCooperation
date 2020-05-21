@@ -1,5 +1,17 @@
 package com.example.framework;
 
+import android.content.Context;
+
+import com.example.framework.utils.LogUtils;
+import com.example.framework.utils.SpUtils;
+import com.tencent.bugly.crashreport.CrashReport;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
+
+import org.litepal.LitePal;
+
+import io.reactivex.functions.Consumer;
+import io.reactivex.plugins.RxJavaPlugins;
+
 /**
  * @filename: com.example.framework
  * @author: 60347
@@ -24,4 +36,24 @@ public class Framework {
         return mFramework;
     }
 
+    /**
+     * 初始化框架 Model
+     *
+     * @param mContext
+     */
+    public void initFramework(Context mContext) {
+        LogUtils.i("initFramework");
+        SpUtils.getInstance().initSp(mContext);
+        LitePal.initialize(mContext);
+        CrashReport.initCrashReport(mContext, BUGLY_KEY, BuildConfig.LOG_DEBUG);
+        ZXingLibrary.initDisplayOpinion(mContext);
+
+        //全局捕获RxJava异常
+        RxJavaPlugins.setErrorHandler(new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                LogUtils.e("RxJava：" + throwable.toString());
+            }
+        });
+    }
 }

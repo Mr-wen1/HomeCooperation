@@ -1,11 +1,8 @@
 package com.example.homecooperation;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.framework.baseui.BaseUIActivity;
-
-import cn.jzvd.BuildConfig;
+import com.example.framework.base.BaseUIActivity;
 
 public class MainActivity extends BaseUIActivity {
 
@@ -13,6 +10,5 @@ public class MainActivity extends BaseUIActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
 }
