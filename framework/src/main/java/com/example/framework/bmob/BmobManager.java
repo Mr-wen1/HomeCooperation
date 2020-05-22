@@ -75,8 +75,8 @@ public class BmobManager{
      *
      * @return
      */
-    public User getUser() {
-        return BmobUser.getCurrentUser(User.class);
+    public InformationUser getUser() {
+        return BmobUser.getCurrentUser(InformationUser.class);
     }
 
     /**
@@ -93,7 +93,13 @@ public class BmobManager{
      * @param listener 回调
      */
     public void requestSMS(String phone, QueryListener<Integer> listener) {
+
         BmobSMS.requestSMSCode(phone, "", listener);
+    }
+
+    public boolean verifySMSCode(String phone, String code,  UpdateListener listener){
+        BmobSMS.verifySmsCode(phone,code, listener);
+        return true;
     }
 
     /**
@@ -103,7 +109,7 @@ public class BmobManager{
      * @param code     短信验证码
      * @param listener 回调
      */
-    public void signOrLoginByMobilePhone(String phone, String code, LogInListener<User> listener) {
+    public void signOrLoginByMobilePhone(String phone, String code, LogInListener<InformationUser> listener) {
         BmobUser.signOrLoginByMobilePhone(phone, code, listener);
     }
 
@@ -134,7 +140,7 @@ public class BmobManager{
          * 1.上传文件拿到地址
          * 2.更新用户信息
          */
-        final User user = getUser();
+        final InformationUser user = getUser();
         final BmobFile bmobFile = new BmobFile(file);
         bmobFile.uploadblock(new UploadFileListener() {
             @Override
@@ -177,7 +183,7 @@ public class BmobManager{
      *
      * @param phone
      */
-    public void queryPhoneUser(String phone, FindListener<User> listener) {
+    public void queryPhoneUser(String phone, FindListener<InformationUser> listener) {
         baseQuery("mobilePhoneNumber", phone, listener);
     }
 
@@ -187,7 +193,7 @@ public class BmobManager{
      * @param objectId
      * @param listener
      */
-    public void queryObjectIdUser(String objectId, FindListener<User> listener) {
+    public void queryObjectIdUser(String objectId, FindListener<InformationUser> listener) {
         baseQuery("objectId", objectId, listener);
     }
 
@@ -207,8 +213,8 @@ public class BmobManager{
      *
      * @param listener
      */
-    public void queryAllUser(FindListener<User> listener) {
-        BmobQuery<User> query = new BmobQuery<>();
+    public void queryAllUser(FindListener<InformationUser> listener) {
+        BmobQuery<InformationUser> query = new BmobQuery<>();
         query.findObjects(listener);
     }
 
@@ -241,8 +247,8 @@ public class BmobManager{
      * @param values
      * @param listener
      */
-    public void baseQuery(String key, String values, FindListener<User> listener) {
-        BmobQuery<User> query = new BmobQuery<>();
+    public void baseQuery(String key, String values, FindListener<InformationUser> listener) {
+        BmobQuery<InformationUser> query = new BmobQuery<>();
         query.addWhereEqualTo(key, values);
         query.findObjects(listener);
     }
@@ -253,7 +259,7 @@ public class BmobManager{
      * @param user
      * @param listener
      */
-    public void addFriend(User user, SaveListener<String> listener) {
+    public void addFriend(InformationUser user, SaveListener<String> listener) {
         Friend friend = new Friend();
         friend.setUser(getUser());
         friend.setFriendUser(user);
@@ -312,12 +318,12 @@ public class BmobManager{
      * @param listener
      */
     public void addFriend(String id, final SaveListener<String> listener) {
-        queryObjectIdUser(id, new FindListener<User>() {
+        queryObjectIdUser(id, new FindListener<InformationUser>() {
             @Override
-            public void done(List<User> list, BmobException e) {
+            public void done(List<InformationUser> list, BmobException e) {
                 if (e == null) {
                     if (CommonUtils.isEmpty(list)) {
-                        User user = list.get(0);
+                        InformationUser user = list.get(0);
                         addFriend(user, listener);
                     }
                 }

@@ -2,7 +2,7 @@
     <string name="app_name">Home Cooperation</string>
 
     <string name="login_phone">电话号码</string>
-    <string name="login_password">登陆密码</string>
+    <string name="login_password">登录密码</string>
 
     <string name="guide_skip">跳过</string>
 
@@ -23,4 +23,12 @@
     <string name="text_register">注册</string>
     <string name="text_username">用户名:</string>
     <string name="text_password">密  码:</string>
+    <string name="text_phone_null">用户名不能为空</string>
+    <string name="text_username_existed">用户名已存在</string>
+    <string name="text_password_null">密码不能为空</string>
+    <string name="text_password_difference">两次输入密码不一致</string>
+    <string name="text_phoneCode_null">验证码不能为空</string>
+    <string name="text_code_request_succeed">请求成功</string>
+    <string name="text_code_request_failed">请求失败</string>
+
 </resources>

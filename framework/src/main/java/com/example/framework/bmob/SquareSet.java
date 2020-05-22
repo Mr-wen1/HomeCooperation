@@ -1,12 +1,14 @@
 package com.example.framework.bmob;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * @filename: com.example.framework.bmob
  * @author: 60347
  * @description: 发布广场
  * @time: 2020/5/21 20:10
  */
-public class SquareSet {
+public class SquareSet extends BmobObject {
     //文本
     public static final int PUSH_TEXT = 0;
     //图片

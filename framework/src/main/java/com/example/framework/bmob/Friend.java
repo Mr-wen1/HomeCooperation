@@ -1,30 +1,30 @@
 package com.example.framework.bmob;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * @filename: com.example.framework.bmob
  * @author: 60347
  * @description: 朋友列表
  * @time: 2020/5/21 20:11
  */
-public class Friend {
+public class Friend extends BmobObject {
     //我自己
-    private User user;
+    private InformationUser user;
     //好友
-    private User friendUser;
+    private InformationUser friendUser;
 
-    public User getUser() {
+    public InformationUser getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(InformationUser user) {
         this.user = user;
     }
 
-    public User getFriendUser() {
-        return friendUser;
-    }
+    public InformationUser getFriendUser() { return friendUser; }
 
-    public void setFriendUser(User friendUser) {
+    public void setFriendUser(InformationUser friendUser) {
         this.friendUser = friendUser;
     }
 }

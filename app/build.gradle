@@ -4,7 +4,6 @@ android {
 
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
-    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId rootProject.ext.android["applicationId"]

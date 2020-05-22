@@ -1,12 +1,14 @@
 package com.example.framework.bmob;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * @filename: com.example.framework.bmob
  * @author: 60347
  * @description: 隐私库
  * @time: 2020/5/21 20:13
  */
-public class PrivateSet {
+public class PrivateSet extends BmobObject {
     //用户ID
     private String userId;
     //用户电话号码

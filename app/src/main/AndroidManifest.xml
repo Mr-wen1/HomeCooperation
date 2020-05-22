@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.homecooperation">
 
     <application
@@ -12,7 +13,8 @@
         android:theme="@style/AppThemeFull">
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.example.homecooperation.BmobContentProvider" />
+            android:authorities="com.example.homecooperation.BmobContentProvider"
+            tools:ignore="ExportedContentProvider" />
         <activity android:name=".ui.GuideActivity" />
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.LoginActivity" />

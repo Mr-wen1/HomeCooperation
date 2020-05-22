@@ -52,12 +52,13 @@ public class IndexActivity extends AppCompatActivity {
         //判断是否第一次启动
         boolean isFirstRun = SpUtils.getInstance()
                 .getBoolean(Constants.SP_IS_FIRST_RUN, true);
-        Intent intent = new Intent();
-        if (isFirstRun) {
-            //跳转到引导页
-            intent.setClass(this, GuideActivity.class);
-            //设置不是第一次启动
-            SpUtils.getInstance().putBoolean(Constants.SP_IS_FIRST_RUN, false);
+        Intent intent = new Intent(this, GuideActivity.class);
+        startActivity(intent);
+//        if (isFirstRun) {
+//            //跳转到引导页
+//            intent.setClass(this, GuideActivity.class);
+//            //设置不是第一次启动
+//            SpUtils.getInstance().putBoolean(Constants.SP_IS_FIRST_RUN, false);
 //        } else {
 //
 //            intent.setClass(this, LoginActivity.class);
@@ -68,6 +69,6 @@ public class IndexActivity extends AppCompatActivity {
 //            } else {
 //                intent.setClass(this, LoginActivity.class);
 //            }
-        }
+//        }
     }
 }

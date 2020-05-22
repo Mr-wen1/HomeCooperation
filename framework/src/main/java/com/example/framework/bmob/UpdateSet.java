@@ -1,12 +1,14 @@
 package com.example.framework.bmob;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * @filename: com.example.framework.bmob
  * @author: 60347
  * @description: 应用更新
  * @time: 2020/5/21 20:15
  */
-public class UpdateSet {
+public class UpdateSet extends BmobObject {
     //描述
     private String desc;
     //下载地址

@@ -4,7 +4,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import com.example.framework.base.BasePagerAdapter;
 import com.example.framework.base.BaseUIActivity;
 import com.example.framework.manager.MediaPlayerManager;
+import com.example.framework.utils.AnimationUtils;
 import com.example.homecooperation.R;
 
 import java.util.ArrayList;
@@ -83,6 +86,9 @@ public class GuideActivity extends BaseUIActivity implements View.OnClickListene
         mPagerAdapter = new BasePagerAdapter(mViewList);
         mViewPager.setAdapter(mPagerAdapter);
 
+        iv_music.setOnClickListener(this);
+        skip.setOnClickListener(this);
+
         //帧动画
         iv_guide_star = view_guide1.findViewById(R.id.iv_guide_night);
         iv_guide_night = view_guide2.findViewById(R.id.iv_guide_star);
@@ -111,7 +117,22 @@ public class GuideActivity extends BaseUIActivity implements View.OnClickListene
 
             }
         });
-        skip.setOnClickListener(this);
+        //歌曲的逻辑
+        startMusic();
+
+    }
+
+    private void startMusic() {
+        mMPManager = new MediaPlayerManager();
+        mMPManager.setLooping(true);
+        AssetFileDescriptor file = getResources().openRawResourceFd(R.raw.guide);
+        mMPManager.startPlay(file);
+
+        mMPManager.setOnComplteionListener(mp -> mMPManager.startPlay(file));
+
+        //旋转动画
+        mAnim = AnimationUtils.rotation(iv_music);
+        mAnim.start();
     }
 
     /**

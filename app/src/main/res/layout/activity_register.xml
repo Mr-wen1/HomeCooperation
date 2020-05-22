@@ -15,19 +15,9 @@
             android:layout_width="16dp"
             android:layout_height="17dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             android:background="@drawable/ic_left_back" />
 
-        <TextView
-            android:id="@+id/tv_registeractivity_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/iv_register_back"
-            android:text="@string/text_register"
-            android:textColor="#fff"
-            android:textSize="20sp" />
     </RelativeLayout>
 
     <LinearLayout
@@ -136,7 +126,8 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="-10dp"
                     android:layout_weight="1.5"
-                    android:text="@string/bt_send" />
+                    android:text="@string/bt_send"
+                    android:textAllCaps="false"/>
             </LinearLayout>
         </LinearLayout>
 

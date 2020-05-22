@@ -2,6 +2,7 @@ package com.example.framework;
 
 import android.content.Context;
 
+import com.example.framework.bmob.BmobManager;
 import com.example.framework.utils.LogUtils;
 import com.example.framework.utils.SpUtils;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -45,7 +46,8 @@ public class Framework {
         LogUtils.i("initFramework");
         SpUtils.getInstance().initSp(mContext);
         LitePal.initialize(mContext);
-        CrashReport.initCrashReport(mContext, BUGLY_KEY, BuildConfig.LOG_DEBUG);
+        BmobManager.getInstance().initBmob(mContext);
+//        CrashReport.initCrashReport(mContext, BUGLY_KEY, BuildConfig.LOG_DEBUG);
         ZXingLibrary.initDisplayOpinion(mContext);
 
         //全局捕获RxJava异常

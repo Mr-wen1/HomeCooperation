@@ -1,13 +1,14 @@
 package com.example.framework.bmob;
 
+import cn.bmob.v3.BmobUser;
+
 /**
  * @filename: com.example.framework.bmob
  * @author: 60347
  * @description: 用户类
- * @time: 2020/5/21 19:58
+ * @time: 2020/5/22 23:24
  */
-public class User {
-
+public class InformationUser extends BmobUser {
     //Token属性
 
     //获取Token的头像地址
