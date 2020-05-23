@@ -5,7 +5,7 @@ import cn.bmob.v3.BmobUser;
 /**
  * @filename: com.example.framework.bmob
  * @author: 60347
- * @description: 用户类
+ * @description: 用户信息类
  * @time: 2020/5/22 23:24
  */
 public class InformationUser extends BmobUser {

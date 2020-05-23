@@ -20,6 +20,7 @@ import com.example.framework.base.BaseUIActivity;
 import com.example.framework.bmob.BmobManager;
 import com.example.framework.bmob.InformationUser;
 import com.example.framework.utils.LogUtils;
+import com.example.homecooperation.MainActivity;
 import com.example.homecooperation.R;
 
 import java.util.UUID;
@@ -132,7 +133,7 @@ public class RegisterActivity extends BaseUIActivity implements View.OnClickList
                 sendSMS();
                 break;
             case R.id.bt_register_register:
-                if (isEmpty() && IS_CODE.equals("验证码验证成功")) {
+                if (isEmpty()) {
                     String id = UUID.randomUUID().toString();
                     String username = et_register_username.getText().toString();
                     String passwordAgain = et_register_passwordAgain.getText().toString();
@@ -210,7 +211,7 @@ public class RegisterActivity extends BaseUIActivity implements View.OnClickList
             Toast.makeText(this, getString(R.string.text_phoneCode_null),
                     Toast.LENGTH_SHORT).show();
             return false;
-        } else {
+        } /*else {
             //验证验证码
             BmobManager.getInstance().verifySMSCode(phone, code, new UpdateListener() {
                 @Override
@@ -225,6 +226,7 @@ public class RegisterActivity extends BaseUIActivity implements View.OnClickList
                         user.update(new UpdateListener() {
                             @Override
                             public void done(BmobException e) {
+
                                 if (e == null) {
                                     Toast.makeText(RegisterActivity.this, "绑定手机号码成功",
                                             Toast.LENGTH_SHORT).show();
@@ -245,7 +247,7 @@ public class RegisterActivity extends BaseUIActivity implements View.OnClickList
                     }
                 }
             });
-        }
+        }*/
         return true;
     }
 
@@ -309,6 +311,8 @@ public class RegisterActivity extends BaseUIActivity implements View.OnClickList
                 LogUtils.e(json);
                 runOnUiThread(() -> Toast.makeText(RegisterActivity.this,
                         "发送成功", Toast.LENGTH_SHORT).show());
+                Intent intent  = new Intent(this, MainActivity.class);
+                startActivity(intent);
             } catch (Exception e) {
                 e.printStackTrace();
                 runOnUiThread(() -> Toast.makeText(RegisterActivity.this,
